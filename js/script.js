@@ -1,23 +1,50 @@
-<template name="helpTemplate">
-	<h1>Multi-Page Meteor Apps</h1>
-	<p>Demo for NetTuts Article. Try clicking the links below:</p>
-	<ul>
-		<li><a href="/home">/home</a></li>
-		<li><a href="/user/Jeff">/user/Jeff</a></li>
-		<li><a href="/user/Ryan">/user/Ryan</a></li>
-		<li><a href="/contact">/contact</a></li>
-	</ul>
-</template>
-<template name="homeTemplate">
-	<h1>This is the Home Page</h1>
-</template>
+﻿(function () {
+  var STORAGE_KEY = "add-your-click-count";
 
-<template name="profileTemplate">
-	<h1>Profile Page</h1>
-	<p>Welcome back {{username}}</p>
-</template>
+  var clickForm = document.getElementById("click-form");
+  var countEl = document.getElementById("click-count");
+  var resetBtn = document.getElementById("reset-btn");
+  var saveInfo = document.getElementById("save-info");
 
-<template name="contactTemplate">
-	<h1>Contact Page</h1>
-	<p>Contact me on twitter at {{twitterName}}</p>
-</template>
+  if (!clickForm || !countEl || !resetBtn || !saveInfo) {
+    return;
+  }
+
+  function readCount() {
+    var stored = window.localStorage.getItem(STORAGE_KEY);
+    var count = Number(stored);
+    return Number.isFinite(count) && count >= 0 ? count : 0;
+  }
+
+  function writeCount(value) {
+    window.localStorage.setItem(STORAGE_KEY, String(value));
+  }
+
+  function render(value) {
+    countEl.textContent = String(value);
+    saveInfo.textContent = "Saved locally in your browser. Last value: " + value;
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var countFromUrl = Number(params.get("count"));
+  var hasValidUrlCount = Number.isFinite(countFromUrl) && countFromUrl >= 0;
+
+  var count = hasValidUrlCount ? Math.floor(countFromUrl) : readCount();
+  if (hasValidUrlCount) {
+    writeCount(count);
+  }
+  render(count);
+
+  clickForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    count += 1;
+    writeCount(count);
+    render(count);
+  });
+
+  resetBtn.addEventListener("click", function () {
+    count = 0;
+    writeCount(count);
+    render(count);
+  });
+})();
