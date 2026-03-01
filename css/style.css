@@ -267,3 +267,46 @@ header h1 {
     padding-top: 1rem;
   }
 }
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid rgba(200, 169, 81, 0.45);
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.22);
+  color: #f5e6b0;
+  font: 600 0.9rem / 1 "Segoe UI", sans-serif;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.share-btn:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.share-btn:active {
+  transform: scale(0.95);
+}
+
+.share-icon {
+  font-size: 1.1rem;
+}
+
+.footer-note {
+  margin: 0.6rem 0 0;
+  font-size: 0.75rem;
+  color: rgba(245, 230, 176, 0.5);
+  letter-spacing: 0.01em;
+}

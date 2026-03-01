@@ -143,4 +143,41 @@
       syncCount(false);
     }
   }, 2500);
+
+  // Share button
+  var shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    function restoreShareBtn() {
+      shareBtn.textContent = "";
+      var icon = document.createElement("span");
+      icon.className = "share-icon";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = "🔗";
+      shareBtn.appendChild(icon);
+      shareBtn.appendChild(document.createTextNode(" Share & Invite Friends"));
+    }
+
+    shareBtn.addEventListener("click", function () {
+      var shareData = {
+        title: "Tasbeeh تسبيح — Count Together",
+        text: "Join me in counting Subhana Allah together on this shared Tasbeeh counter!",
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(function (err) {
+          // AbortError means the user cancelled the share sheet — not a real error
+          if (err.name !== "AbortError") {
+            setStatus("Could not open share dialog. Copy the URL from the address bar.", true);
+          }
+        });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          shareBtn.textContent = "✅ Link copied!";
+          setTimeout(restoreShareBtn, 2000);
+        }).catch(function () {
+          window.prompt("Copy this link to share:", window.location.href);
+        });
+      }
+    });
+  }
 })();
