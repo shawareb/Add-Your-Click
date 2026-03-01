@@ -3,28 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Add Your Click</title>
+  <title>Tasbeeh | تسبيح</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <header>
-    <h1>Add Your Click</h1>
+    <div class="header-star" aria-hidden="true">☪</div>
+    <h1>Tasbeeh <span class="arabic-title">تسبيح</span></h1>
   </header>
 
   <main id="body">
-    <h2>Click as much as you can</h2>
+    <div class="dhikr-display">
+      <p class="dhikr-phrase" lang="ar">سُبْحَانَ اللّٰه</p>
+      <p class="dhikr-translation">Subhana Allah — Glory be to Allah</p>
+    </div>
 
     <form id="click-form" novalidate>
-      <fieldset id="signup">
-        <legend>Add Clicks</legend>
-
-        <p class="counter-label">Total clicks</p>
+      <div class="counter-block">
+        <p class="counter-label">Total Tasbeeh</p>
         <p class="counter-value" id="click-count" aria-live="polite">0</p>
+      </div>
 
-        <input type="submit" value="Click">
+      <button type="submit" id="tasbih-btn" class="tasbih-btn" aria-label="Add Tasbeeh">
+        <span class="btn-inner" aria-hidden="true">
+          <span class="btn-icon">📿</span>
+          <span class="btn-text">اضغط · Click</span>
+        </span>
+        <span class="ripple-container" aria-hidden="true"></span>
+      </button>
+
+      <div class="secondary-controls">
         <button type="button" id="reset-btn" class="secondary-btn">Reset</button>
         <p class="reset-note">Reset is admin-only (password required).</p>
-      </fieldset>
+      </div>
 
       <p id="save-info">Stored on server. Shared with all users.</p>
     </form>
