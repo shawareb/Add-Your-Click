@@ -4,11 +4,32 @@ A lightweight, multi-user shared click-counter web app. Every visitor clicks the
 
 ---
 
-## Screenshot
+## Screenshots — Before & After
 
-![Add Your Click – desktop view](https://github.com/user-attachments/assets/dfc72dff-3c75-4685-b831-9fe332248e25)
+### Then — *Add Your Click* (v0.1 · 2013)
 
-> **Desktop view** – the counter card is fully responsive and also works on mobile.
+![Add Your Click – original 2013 design](https://github.com/user-attachments/assets/2f87b7f6-247b-4264-bff8-b516029c35ac)
+
+> The original 2013 version: a single-page client-side click counter with no backend, no database, and no shared state.
+
+---
+
+### Now — *Tasbeeh تسبيح* (v2.0 · 2026)
+
+![Tasbeeh – current desktop view](docs/screenshot-desktop.png)
+
+> Fully redesigned as a shared Tasbeeh (تسبيح) counter. Every visitor clicks the **same global count** — stored in SQLite and synced in real time across all connected devices.
+
+---
+
+## Host It & Share It
+
+Because the counter is stored **on the server**, hosting this app lets anyone in the world join the same Tasbeeh session — family, friends, or an entire community can count *Subhana Allah* together, wherever they are.
+
+- **Local network** — run `python server.py` on a computer and share your IP; everyone on the same Wi-Fi shares the count.
+- **Cloud / VPS** — deploy to any Linux server (see the deployment options below) and share the URL so people worldwide can add their Tasbeeh.
+- **Always-on** — set it up as a systemd service (Option 2) so the counter keeps running and accumulating even when no one is actively on the page.
+- **Shareable link** — tap the **Share** button at the bottom of the page to send the URL directly to friends via your device's native share sheet or by copying it to the clipboard.
 
 ---
 
